@@ -1,0 +1,6 @@
+films_db:
+  host: localhost
+  port: 6432
+  user: postgres
+  name: postgres
+  password: nury
