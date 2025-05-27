@@ -124,14 +124,14 @@ func main() {
 				}
 			}()
 
-			wg.Add(1)
-			go func() {
-				defer wg.Done()
-				// Transcode to 1080p
-				if err = scripts.TranscodeVideoHLS(input, "1080", outputDir, 1920, 1080); err != nil {
-					log.Fatalf("Transcoding to 1080p failed: %v", err)
-				}
-			}()
+			// wg.Add(1)
+			// go func() {
+			// 	defer wg.Done()
+			// 	// Transcode to 1080p
+			// 	if err = scripts.TranscodeVideoHLS(input, "1080", outputDir, 1920, 1080); err != nil {
+			// 		log.Fatalf("Transcoding to 1080p failed: %v", err)
+			// 	}
+			// }()
 
 		}
 
