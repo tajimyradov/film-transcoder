@@ -105,10 +105,10 @@ func ConstructMasterFile(streams []models.Stream, records map[string]models.Lang
 		return fmt.Errorf("failed to write 480p video line: %w", err)
 	}
 
-	_, err = file.WriteString(fmt.Sprintf(videoTemplate, bandwidth1080, resolution1080, "1080p/playlist.m3u8"))
-	if err != nil {
-		return fmt.Errorf("failed to write 1080p video line: %w", err)
-	}
+	// _, err = file.WriteString(fmt.Sprintf(videoTemplate, bandwidth1080, resolution1080, "1080p/playlist.m3u8"))
+	// if err != nil {
+	// 	return fmt.Errorf("failed to write 1080p video line: %w", err)
+	// }
 
 	return nil
 }
