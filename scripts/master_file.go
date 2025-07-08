@@ -5,8 +5,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/tajimyradov/transcode/models"
-	"github.com/tajimyradov/transcode/repository"
+	"github.com/tajimyradov/transcoder/models"
+	"github.com/tajimyradov/transcoder/repository"
 )
 
 const audioTemplate = `#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",NAME="%s",LANGUAGE="%s",AUTOSELECT=%s,DEFAULT=%s,URI="%s"`

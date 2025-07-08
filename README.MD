@@ -14,6 +14,8 @@ Use [HandBrake](https://handbrake.fr/) to set handler names for audio tracks in 
 - `2-0-rus` &nbsp;→&nbsp; Dubbing in Russian  
 - `3-lf-rus` &nbsp;→&nbsp; Studio dubbing (Lostfilm, Russian)
 
+Install [FFMPEG](https://ffmpeg.org/) and [FFPROBE](https://ffmpeg.org/ffprobe.html)
+
 **2. Handler Name Format:**  
 `<type>-<studio>-<language>`
 

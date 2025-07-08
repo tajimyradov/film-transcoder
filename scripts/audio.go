@@ -8,9 +8,9 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/tajimyradov/transcode/models"
-	"github.com/tajimyradov/transcode/repository"
-	"github.com/tajimyradov/transcode/utils"
+	"github.com/tajimyradov/transcoder/models"
+	"github.com/tajimyradov/transcoder/repository"
+	"github.com/tajimyradov/transcoder/utils"
 )
 
 func TranscodeAudio(input string, stream models.Stream, outputDir string, filmsRepo *repository.VideosRepository, logFile *os.File) error {

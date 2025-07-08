@@ -15,12 +15,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/tajimyradov/transcode/broker"
-	"github.com/tajimyradov/transcode/database"
-	"github.com/tajimyradov/transcode/models"
-	"github.com/tajimyradov/transcode/repository"
-	"github.com/tajimyradov/transcode/scripts"
-	"github.com/tajimyradov/transcode/storage"
+	"github.com/tajimyradov/transcoder/broker"
+	"github.com/tajimyradov/transcoder/database"
+	"github.com/tajimyradov/transcoder/models"
+	"github.com/tajimyradov/transcoder/repository"
+	"github.com/tajimyradov/transcoder/scripts"
+	"github.com/tajimyradov/transcoder/storage"
 )
 
 const ParentPath = "media"

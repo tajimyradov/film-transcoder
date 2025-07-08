@@ -5,7 +5,7 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/tajimyradov/transcode/utils"
+	"github.com/tajimyradov/transcoder/utils"
 )
 
 func getBitrate(resolution string) string {

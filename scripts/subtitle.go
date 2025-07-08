@@ -6,8 +6,8 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/tajimyradov/transcode/models"
-	"github.com/tajimyradov/transcode/utils"
+	"github.com/tajimyradov/transcoder/models"
+	"github.com/tajimyradov/transcoder/utils"
 )
 
 func TranscodeSubtitle(input string, stream models.Stream, outputDir string, logFile *os.File) error {

@@ -1,7 +1,7 @@
 package repository
 
 import (
-	models "github.com/tajimyradov/transcode/models"
+	models "github.com/tajimyradov/transcoder/models"
 
 	"github.com/jmoiron/sqlx"
 )

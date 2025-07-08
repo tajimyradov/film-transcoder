@@ -1,4 +1,4 @@
-module github.com/tajimyradov/transcode
+module github.com/tajimyradov/transcoder
 
 go 1.23.0
 

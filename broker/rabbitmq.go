@@ -3,7 +3,7 @@ package broker
 import (
 	"fmt"
 
-	"github.com/tajimyradov/transcode/models"
+	"github.com/tajimyradov/transcoder/models"
 
 	"github.com/streadway/amqp"
 )

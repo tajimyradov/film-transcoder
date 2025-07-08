@@ -3,7 +3,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/tajimyradov/transcode/models"
+	"github.com/tajimyradov/transcoder/models"
 
 	_ "github.com/jackc/pgx/stdlib" // pgx driver
 	"github.com/jmoiron/sqlx"

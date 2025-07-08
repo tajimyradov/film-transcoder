@@ -4,7 +4,7 @@ import (
 	"crypto/tls"
 	"net/http"
 
-	"github.com/tajimyradov/transcode/models"
+	"github.com/tajimyradov/transcoder/models"
 
 	"github.com/minio/minio-go/v7"
 	minioCred "github.com/minio/minio-go/v7/pkg/credentials"
