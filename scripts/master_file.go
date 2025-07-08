@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"transcode/models"
-	"transcode/repository"
+
+	"github.com/tajimyradov/transcode/models"
+	"github.com/tajimyradov/transcode/repository"
 )
 
 const audioTemplate = `#EXT-X-MEDIA:TYPE=AUDIO,GROUP-ID="audio",NAME="%s",LANGUAGE="%s",AUTOSELECT=%s,DEFAULT=%s,URI="%s"`
@@ -18,7 +19,7 @@ const videoTemplate = `
 
 // #EXT-X-STREAM-INF:BANDWIDTH=%s,RESOLUTION=%s,CODECS="avc1.42e01e,mp4a.40.2",AUDIO="audio",SUBTITLES="subtitles"
 
-func ConstructMasterFile(streams []models.Stream, records map[string]models.Language, filmsRepo *repository.FilmsRepository, outputDir string, bandwidth1080 string, resolution1080 string, bandwidth480 string, resolution480 string) error {
+func ConstructMasterFile(streams []models.Stream, records map[string]models.Language, filmsRepo *repository.VideosRepository, outputDir string, bandwidth1080 string, resolution1080 string, bandwidth480 string, resolution480 string) error {
 	var audioLines, subtitleLines []string
 
 	for _, stream := range streams {

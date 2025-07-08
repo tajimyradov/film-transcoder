@@ -6,7 +6,7 @@ import (
 
 type AppConfig struct {
 	FilmsDB  Postgres `mapstructure:"films_db"`
-	Mercury  Minio    `mapstructure:"mercury"`
+	Minio    Minio    `mapstructure:"minio"`
 	RabbitMQ RabbitMQ `mapstructure:"rabbitmq"`
 }
 
@@ -19,16 +19,19 @@ type Postgres struct {
 }
 
 type Minio struct {
-	EndPoint        string `mapstructure:"endpoint"`
-	AccessKey       string `mapstructure:"access_key"`
-	SecretAccessKey string `mapstructure:"secret_key"`
-	UseSsl          bool   `mapstructure:"use_ssl"`
+	EndPoint           string `mapstructure:"endpoint"`
+	AccessKey          string `mapstructure:"access_key"`
+	SecretAccessKey    string `mapstructure:"secret_key"`
+	UseSsl             bool   `mapstructure:"use_ssl"`
+	OrigianlFileBucket string `mapstructure:"original_file_bucket"`
+	HLSFileBucket      string `mapstructure:"hls_file_bucket"`
 }
 
 type RabbitMQ struct {
-	Username string `mapstructure:"username"`
-	Password string `mapstructure:"password"`
-	Url      string `mapstructure:"url"`
+	Username  string `mapstructure:"username"`
+	Password  string `mapstructure:"password"`
+	Url       string `mapstructure:"url"`
+	QueueName string `mapstructure:"queue_name"`
 }
 
 func NewAppConfig(configFile string) (*AppConfig, error) {

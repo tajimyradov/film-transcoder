@@ -1,6 +1,6 @@
 # Film & TV Series Transcoder
 
-This application is used to transcode films and TV series to the HLS (HTTP Live Streaming) format.  
+This application is used to transcode Videos to the HLS (HTTP Live Streaming) format.  
 It supports multiple audio languages and subtitles.
 
 ---

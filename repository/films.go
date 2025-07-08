@@ -1,24 +1,40 @@
 package repository
 
 import (
+	models "github.com/tajimyradov/transcode/models"
+
 	"github.com/jmoiron/sqlx"
-	"transcode/models"
 )
 
-type FilmsRepository struct {
+type VideosRepository struct {
 	db *sqlx.DB
 }
 
-func NewFilmsRepository(db *sqlx.DB) *FilmsRepository {
-	return &FilmsRepository{db: db}
+func NewVideosRepository(db *sqlx.DB) *VideosRepository {
+	return &VideosRepository{db: db}
 }
 
-func (f *FilmsRepository) GetStudioByID(abbr string) (models.Studio, error) {
+func (f *VideosRepository) GetStudioByID(abbr string) (models.Studio, error) {
 	var studio models.Studio
-	query := `select id, name, type, abbreviated from studios where abbreviated = $1 and type=2`
-	err := f.db.QueryRow(query, abbr).Scan(&studio.ID, &studio.Name, &studio.Type, &studio.Abbreviated)
+	query := `select id, name, abbreviated from studios where abbreviated = $1`
+	err := f.db.QueryRow(query, abbr).Scan(&studio.ID, &studio.Name, &studio.Abbreviated)
 	if err != nil {
 		return models.Studio{}, err
 	}
 	return studio, nil
+}
+
+func (f *VideosRepository) GetOriginalFileOfVideo(id int) (string, error) {
+	var res string
+	query := `select filepath from files where video_id=$1`
+	err := f.db.QueryRow(query, id).Scan(&res)
+	if err != nil {
+		return "", err
+	}
+
+	return res, nil
+}
+
+func (f *VideosRepository) UpdateTranscodeFiles(id int, hls string) error {
+	return nil
 }

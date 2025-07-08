@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"transcode/utils"
+
+	"github.com/tajimyradov/transcode/utils"
 )
 
 func getBitrate(resolution string) string {
@@ -18,7 +19,7 @@ func getBitrate(resolution string) string {
 	}
 }
 
-func TranscodeVideoHLS(input, resolution, outputDir string, width, height int) error {
+func TranscodeVideoHLS(input, resolution, outputDir string, width, height int, logFile *os.File) error {
 
 	fullDir := fmt.Sprintf("%s/%sp", outputDir, resolution)
 	if err := os.MkdirAll(fullDir, 0777); err != nil {
@@ -69,8 +70,8 @@ func TranscodeVideoHLS(input, resolution, outputDir string, width, height int) e
 	}
 
 	cmd := exec.Command("ffmpeg", args...)
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
+	cmd.Stdout = logFile
+	cmd.Stderr = logFile
 
 	return cmd.Run()
 }

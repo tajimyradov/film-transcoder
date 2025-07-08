@@ -1,23 +1,26 @@
 package scripts
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"os"
 	"os/exec"
 	"strings"
-	"transcode/models"
-	"transcode/repository"
-	"transcode/utils"
+
+	"github.com/tajimyradov/transcode/models"
+	"github.com/tajimyradov/transcode/repository"
+	"github.com/tajimyradov/transcode/utils"
 )
 
-func TranscodeAudio(input string, stream models.Stream, outputDir string, filmsRepo *repository.FilmsRepository) error {
+func TranscodeAudio(input string, stream models.Stream, outputDir string, filmsRepo *repository.VideosRepository, logFile *os.File) error {
 
 	handlerName := stream.Tags.HandlerName
 	arr := strings.Split(handlerName, "-")
 
 	if len(arr[2]) != 3 {
-		log.Fatalf("Invalid handler: %s", handlerName)
+		log.Printf("Invalid handler: %s", handlerName)
+		return errors.New("invalid handler")
 	}
 
 	folder := ""
@@ -27,7 +30,8 @@ func TranscodeAudio(input string, stream models.Stream, outputDir string, filmsR
 
 		hlsFolder := fmt.Sprintf("%s/%s", outputDir, folder)
 		if err := os.MkdirAll(hlsFolder, 0777); err != nil {
-			log.Fatalf("Failed to create HLS folder: %v", err)
+			log.Printf("Failed to create HLS folder: %v", err)
+			return err
 		}
 
 	}
@@ -37,7 +41,8 @@ func TranscodeAudio(input string, stream models.Stream, outputDir string, filmsR
 
 		hlsFolder := fmt.Sprintf("%s/%s", outputDir, folder)
 		if err := os.MkdirAll(hlsFolder, 0777); err != nil {
-			log.Fatalf("Failed to create HLS folder: %v", err)
+			log.Printf("Failed to create HLS folder: %v", err)
+			return err
 		}
 
 	}
@@ -46,14 +51,16 @@ func TranscodeAudio(input string, stream models.Stream, outputDir string, filmsR
 		studio, err := filmsRepo.GetStudioByID(arr[1])
 
 		if err != nil {
-			log.Fatalf(`Failed to get studio by id "%s"`, arr[2])
+			log.Printf(`Failed to get studio by id "%s"`, arr[1])
+			return err
 		}
 
 		folder = "audio/studios/" + studio.Abbreviated + "/" + arr[2]
 
 		hlsFolder := fmt.Sprintf("%s/%s", outputDir, folder)
 		if err = os.MkdirAll(hlsFolder, 0777); err != nil {
-			log.Fatalf("Failed to create HLS folder: %v", err)
+			log.Printf("Failed to create HLS folder: %v", err)
+			return err
 		}
 
 	}
@@ -91,8 +98,8 @@ func TranscodeAudio(input string, stream models.Stream, outputDir string, filmsR
 	}
 
 	ffmpeg := exec.Command("ffmpeg", args...)
-	ffmpeg.Stdout = os.Stdout
-	ffmpeg.Stderr = os.Stderr
+	ffmpeg.Stdout = logFile
+	ffmpeg.Stderr = logFile
 
 	return ffmpeg.Run()
 }

@@ -2,10 +2,12 @@ package database
 
 import (
 	"fmt"
+
+	"github.com/tajimyradov/transcode/models"
+
 	_ "github.com/jackc/pgx/stdlib" // pgx driver
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
-	"transcode/models"
 )
 
 func NewPostgresDB(cfg models.Postgres) (*sqlx.DB, error) {

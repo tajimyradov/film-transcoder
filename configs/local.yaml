@@ -1,6 +1,20 @@
 films_db:
   host: localhost
-  port: 6432
+  port: 5555
   user: postgres
   name: postgres
-  password: nury
+  password: transcode
+
+rabbitmq:
+  addr: localhost:5672/
+  username: rabbit
+  password: rabbit
+  queue_name: video_transcode
+
+minio:
+  endpoint: localhost:9000
+  access_key: ROOTUSER
+  secret_key: CHANGEME123
+  use_ssl: false
+  original_file_bucket: original
+  hls_file_bucket: videos

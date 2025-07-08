@@ -5,11 +5,12 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"transcode/models"
-	"transcode/utils"
+
+	"github.com/tajimyradov/transcode/models"
+	"github.com/tajimyradov/transcode/utils"
 )
 
-func TranscodeSubtitle(input string, stream models.Stream, outputDir string) error {
+func TranscodeSubtitle(input string, stream models.Stream, outputDir string, logFile *os.File) error {
 	handlerName := stream.Tags.HandlerName
 
 	folder := "subtitle/" + handlerName
@@ -50,8 +51,8 @@ func TranscodeSubtitle(input string, stream models.Stream, outputDir string) err
 	}
 
 	ffmpeg := exec.Command("ffmpeg", args...)
-	ffmpeg.Stdout = os.Stdout
-	ffmpeg.Stderr = os.Stderr
+	ffmpeg.Stdout = logFile
+	ffmpeg.Stderr = logFile
 
 	return ffmpeg.Run()
 }
